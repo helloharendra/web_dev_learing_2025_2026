@@ -1,3 +1,78 @@
 * {
     color : red
 }
+body{
+    background-color: yellow;
+    background-image: url('/images/nature.jpg');
+
+}
+.intro{
+    font-size: 60;
+
+}
+
+.card1{
+    background-color: wheat;
+    border-radius: 20px;
+    padding: 50;
+    width: 200;
+    margin: auto;
+
+
+}
+
+.card2{
+    background-color: yellowgreen;
+    border-radius: 20px;
+    padding: 50;
+    width: 200;
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+
+
+}
+
+.card h2{
+    color: green;
+
+}
+
+.card p{
+    color: bisque;
+    font-size: 20;
+
+}
+.card2:hover{
+    background-color: azure;
+}
+.btn{
+    background-color: yellow;
+    color: red;
+    margin: 10;
+    padding: 20;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.btn:hover{
+    background-color: brown;color: wheat;
+
+}
+.box{
+    width: 250px;
+    background: orange;
+    padding: 20;
+    border: 3px solid blue
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, o.1);
+}
+.row{
+    display: fiex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    
+}
+
