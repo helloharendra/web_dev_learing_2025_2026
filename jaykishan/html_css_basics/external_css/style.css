@@ -12,7 +12,7 @@ body{
 }
 
 .card1{
-    background-color: wheat;
+    background-color: black;
     border-radius: 20px;
     padding: 50;
     width: 200;
@@ -56,7 +56,7 @@ body{
 
 }
 .btn:hover{
-    background-color: brown;color: wheat;
+    background-color: brown;color: blue;
 
 }
 .box{
