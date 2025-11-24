@@ -2,3 +2,54 @@
 {
     color:red;
 }
+body{
+    background-color: yellow;
+    background-color: url('/images/nature.jpg');
+}
+.intro{
+    font-size: 120;
+}
+.des{
+    font-size: 60;
+}
+.card1{
+    background-color: white;
+    border-radius: 20;
+    padding: 50;
+    width: 200;
+    margin: auto;
+}
+.card2{
+    background-color: yellow;
+    border-radius: 20px;
+    padding: 50;
+    width: 200;
+    margin-top: auto;
+    margin-left: auto;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    margin-bottom: auto;
+}
+.card2{
+    color: green;
+}
+.card p{
+    color: bisque;
+    font-size: 20;
+}
+.card2:hover{
+    background-color:brown;color: wheat;
+}
+.box{
+    width: 250px;
+    background: orange;
+    padding: 20;
+border: 3px solid blue;
+margin: 30px;
+border-radius: 10px;
+box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+}
+.row{
+    display: flex;
+    justify-content: center;
+    gap: 20;
+    margin-top: 40px;
+}
