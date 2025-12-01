@@ -7,5 +7,27 @@ p{
 color:aqua;
 text-align:center;
 font-size: 25px;
+}
+.card{
+background-color: yellow;
+border-radius: 50px;
+padding: 20;
+}
+.card h2{
+color:black;
+}
+.card p{
+font-size: 30;
+color:black;
+}
+.btn{
+background-color: aqua;
+color:red;
+border-radius: 20px;
+font-size: 10px;
+}
+,btn:hover{
+background-color: orange;
+color: red;
 
 }
