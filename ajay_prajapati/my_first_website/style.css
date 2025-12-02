@@ -1,4 +1,53 @@
 *{
-  color:yellowgreen;
+  color:blue;
+}
+
+,card-container{
+  
+  display:flex;
+   gap: 20px;
 
 }
+ 
+,card{
+
+  background-color: gray;
+  border-radius:  16px;
+height: 500;
+width: 400;
+text-align: center;
+
+}
+
+
+body {
+     margin:0;
+     font-family: Arial, sans- serif
+}
+     .navbar{
+     disaplay: flex;
+     justify-content: space-between;
+     align-items:center;
+     background-color: #333;
+     padding: 15px 40px ;
+     }
+
+     .logo {   
+
+      color: aliceblue;
+      font-size: 22px;
+      font-weight: bold;
+
+     }
+     .nav-links{
+          list-style: none;
+          display:flex;
+          gap:25px;
+     }
+
+     .nav-links li a{
+
+      color:bisque;
+       text-decoration: none;
+       font-size: 50px;
+    }
