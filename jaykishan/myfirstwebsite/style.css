@@ -6,13 +6,20 @@
     display: flex;
     gap: 20px;
 }
+.hero-image{
+    border-radius: 20px;
+}
 
-.caerd{
-    background-color: black;
+.card{
+    background-color: gray;
     border-radius: 16px;
     height: 500;
     width: 400;
     text-align: center;
+}
+.body{
+    margin: 0;
+    font-family: arial, sans-serif;
 }
 .navbar{
     display: flex;
@@ -21,6 +28,26 @@
     background-color: #333;
     padding: 15px 40px;
     
+
+
+}
+.logo{
+    color: wheat;
+    font-size: 22px;
+    font-weight: bold;
+}
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+.nav-links li a{
+    color: wheat;
+    text-decoration: none;
+    font-size: 16px;
+}
+.nav-links li a:hover{
+    color: #ff9800;
 
 
 }
