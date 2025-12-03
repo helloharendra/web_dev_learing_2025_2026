@@ -1,3 +1,38 @@
-*{ 
-    color: blue;
+*{
+    color: black;
 }
+.card-container{
+ display: flex;
+ gap: 20px;
+}
+.card{
+    background-color: gray;
+    border-radius: 16px;
+    height: 500;
+    width: 400;
+    text-align: center;
+}
+/*basic navber styling*/
+.body{ margin: 0;
+font-family: Arial, sans-serif;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blueviolet;
+    padding: 15px 40px;
+}
+.logo{
+    color:wheat;
+    font-size: 22px;
+    font-weight: bold;
+}
+.nav-links{
+    list-style: none;
+    display: flex;
+gap: 25px;}
+.nav-links li a {color: white;
+text-decoration: none;
+font-size: 16px;}
+
