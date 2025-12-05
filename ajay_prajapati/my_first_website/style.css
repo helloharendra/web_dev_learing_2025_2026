@@ -1,20 +1,16 @@
 *{
-  color:blue;
+  color:black;
 }
-
-,card-container{
-  
-  display:flex;
+.card-container{
+   display:flex;
    gap: 20px;
-
 }
  
-,card{
-
+.card{
   background-color: gray;
   border-radius:  16px;
-height: 500;
-width: 400;
+  height: 500;
+  width: 400;
 text-align: center;
 
 }
@@ -22,32 +18,38 @@ text-align: center;
 
 body {
      margin:0;
-     font-family: Arial, sans- serif
+     font-family: Arial, sans-serif;
 }
-     .navbar{
-     disaplay: flex;
+.navbar{
+
+     display: flex;
      justify-content: space-between;
      align-items:center;
      background-color: #333;
      padding: 15px 40px ;
-     }
+}
 
-     .logo {   
+.logo {   
 
       color: aliceblue;
       font-size: 22px;
       font-weight: bold;
 
      }
-     .nav-links{
+.nav-links{
+
           list-style: none;
           display:flex;
           gap:25px;
      }
 
-     .nav-links li a{
+.nav-links li a {
 
       color:bisque;
        text-decoration: none;
-       font-size: 50px;
+       font-size: 16px;
+    }
+
+.nav-link li a a:hover {
+       color:#ff9800;
     }
