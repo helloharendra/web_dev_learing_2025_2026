@@ -6,13 +6,13 @@
  gap: 20px;
 }
 .card{
-    background-color: gray;
+    background-color: rgb(211, 189, 189);
     border-radius: 16px;
     height: 500;
     width: 400;
     text-align: center;
 }
-/*basic navber styling*/
+
 .body{ margin: 0;
 font-family: Arial, sans-serif;
 }
@@ -20,19 +20,30 @@ font-family: Arial, sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: blueviolet;
+    background-color: blue;
     padding: 15px 40px;
 }
 .logo{
-    color:wheat;
+    color:aliceblue;
     font-size: 22px;
     font-weight: bold;
 }
 .nav-links{
+    text-decoration: none;
     list-style: none;
     display: flex;
-gap: 25px;}
-.nav-links li a {color: white;
-text-decoration: none;
-font-size: 16px;}
+    gap: 25px;
 
+}
+.nav-links li a {
+    text-decoration:none;
+    list-style: none;
+    display: flex;
+    color: bisque;
+    font-size: 25px;
+}
+.nav-links li a:hover{
+
+    color: #ff9800;
+
+}
