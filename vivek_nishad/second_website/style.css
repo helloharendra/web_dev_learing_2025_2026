@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "segoe UI", Arial, sans-serif;
+    background-color: #f5f8ff;
+    color: #1f2937;
+    line-height: 1.6;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background:linear-gradient(90deg,#0f172a, #1e3a8a);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    z-index: 1000;
+}
+.logo {
+    color: #ffffffff;
+    font-size: 22px;
+    font-weight: bold;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+.nav-links a {
+    color: #e0e7ff;
+    text-decoration: none;
+    font-size: 16px;
+}
+.nav-links a:hover {
+    color: #60a5fa;
+}
+#menu-toggle {
+    display: none;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.hamburger span { 
+    background: #ffffff;
+    height: 3px;
+    width: 25px;
+    margin: 4px;
+    display: block;
+}
+section {
+    padding: 120px 80px;
+}
+.alt-bg {
+    background: linear-gradient(to right,#dbeafa,#eff6ff);
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #374151;
+}
+ 
+.center {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+#home{
+background: linear-gradient(to right,#eff6ff, #ffffff);
+
+}
+
+.paragraph{
+ text-align: center;
+max-width: 900px;
+margin: 0auto 40px;
+
+}
+
+.flex{
+display: flex;
+gap: 40px;
+align-items: center;
+justify-content: center;
+flex-wrap:wrap;
+
+}
+
+.hero img{
+width: 350px;
+border-radius: 20px;
+box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+
+}
+.card-container{
+display: flex;
+flex-wrap: wrap;
+gap: 30px;
+justify-content: center;
+
+}
+
+.card{
+background: #ffffff;
+width: 280px;
+padding: 25px;
+border-radius: 18px;
+text-align: center;
+box-shadow: 0 10px 25px rgba(0,0,0,0,08);
+transition: transform 0.3s;
+
+}
+
+
+.card:hover{
+
+transform: translatey(-8px);
+
+}
+
+@media (max-width:768px){
+section{
+padding: 100px 30px 60px ;
+
+}
+
+.hamburger{
+
+display: flex;
+}
+
+.nav-links{
+position:absolute;
+top:65px;
+right: 0;
+background: #1e3a8a;
+flex-direction: column;
+width: 220px;
+display: none;
+padding: 20px;
+
+}
+
+
+.nav-links li{
+margin-bottom: 15px;
+
+}
+#menu-toggle:cheked +.hamburger + .nav-links{
+
+ display: flex;   
+}
+
+h1{
+font-size: 28px;
+
+}
+
+.hero img{
+
+width: 280px;
+
+text-align: center;
+justify-content: center;
+align-items: center;
+
+
+}
+
+
+}
+
+
+
+
