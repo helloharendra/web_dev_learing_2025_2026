@@ -1,0 +1,63 @@
+*{
+  color:black;
+}
+.card-container{
+   display:flex;
+   gap: 20px;
+}
+ 
+.card{
+  background-color: rgb(204, 6, 194);
+  border-radius:  16px;
+  height: 500;
+  width: 400;
+text-align: center;
+
+}
+
+
+body {
+     margin:0;
+     font-family: Arial, sans-serif;
+}
+.navbar{
+
+     display: flex;
+     justify-content: space-between;
+     align-items:center;
+     background-color:rgb(1, 1, 112);
+     padding: 15px 40px ;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 999;
+
+}
+
+
+.logo {   
+
+      color: aliceblue;
+      font-size: 22px;
+      font-weight: bold;
+
+     }
+.nav-links{
+
+          list-style: none;
+          display:flex;
+          gap:25px;
+          margin-right: 60px;
+     }
+
+.nav-links li a {
+
+      color:bisque;
+       text-decoration: none;
+       font-size: 16px;
+    }
+
+.nav-link li a a:hover {
+       color:#ff9800;
+    }
