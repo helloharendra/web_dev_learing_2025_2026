@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overspeed Challan System - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .left-panel, .right-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        h3 {
+            color: #555;
+            margin: 15px 0 10px 0;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .vehicle-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .vehicle-option {
+            padding: 20px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .vehicle-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .vehicle-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        }
+
+        .vehicle-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .speed-control {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .speed-display {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 15px 0;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .speed-label {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .check-btn:active {
+            transform: translateY(0);
+        }
+
+        .challan-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 2px solid #ff6b6b;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .challan-header {
+            text-align: center;
+            color: #d63031;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .challan-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .detail-item {
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .fine-amount {
+            grid-column: span 2;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+            color: white;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .status-safe {
+            background: #00b894;
+            color: white;
+        }
+
+        .status-warning {
+            background: #fdcb6e;
+            color: #333;
+        }
+
+        .status-danger {
+            background: #e17055;
+            color: white;
+        }
+
+        .status-critical {
+            background: #d63031;
+            color: white;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .previous-challans {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .challan-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .challan-item {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .no-challan {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+
+        .license-status {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .license-valid {
+            background: #00b89420;
+            color: #00b894;
+            border: 2px solid #00b894;
+        }
+
+        .license-suspended {
+            background: #d6303120;
+            color: #d63031;
+            border: 2px solid #d63031;
+            animation: blink 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel - Vehicle Selection & Speed Control -->
+        <div class="left-panel">
+            <h1>🚦 OVERSpeed Challan System</h1>
+            
+            <div class="section">
+                <h2>1. Select Vehicle Type</h2>
+                <div class="vehicle-options">
+                    <div class="vehicle-option" onclick="selectVehicle('CAR')" data-speed-limit="60">
+                        <div class="vehicle-icon">🚗</div>
+                        <h3>Car</h3>
+                        <p>Speed Limit: 60 km/h</p>
+                    </div>
+                    <div class="vehicle-option" onclick="selectVehicle('BIKE')" data-speed-limit="50">
+                        <div class="vehicle-icon">🏍️</div>
+                        <h3>Bike</h3>
+                        <p>Speed Limit: 50 km/h</p>
+                    </div>
+                    <div class="vehicle-option" onclick="selectVehicle('TRUCK')" data-speed-limit="40">
+                        <div class="vehicle-icon">🚚</div>
+                        <h3>Truck</h3>
+                        <p>Speed Limit: 40 km/h</p>
+                    </div>
+                    <div class="vehicle-option" onclick="selectVehicle('BUS')" data-speed-limit="50">
+                        <div class="vehicle-icon">🚌</div>
+                        <h3>Bus</h3>
+                        <p>Speed Limit: 50 km/h</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. Set Vehicle Speed</h2>
+                <div class="speed-control">
+                    <div class="speed-display" id="speedDisplay">50 km/h</div>
+                    <input type="range" id="speedSlider" min="0" max="150" value="50" 
+                           oninput="updateSpeed(this.value)">
+                    <div class="speed-label">
+                        <span>0 km/h</span>
+                        <span>150 km/h</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>3. Vehicle Information</h2>
+                <div style="margin-top: 10px;">
+                    <p><strong>Selected Vehicle:</strong> <span id="selectedVehicle">Not Selected</span></p>
+                    <p><strong>Speed Limit:</strong> <span id="speedLimit">-</span> km/h</p>
+                    <p><strong>Current Speed:</strong> <span id="currentSpeed">50</span> km/h</p>
+                    <p><strong>Status:</strong> <span id="speedStatus" class="status-indicator status-safe">SAFE</span></p>
+                </div>
+            </div>
+
+            <button class="check-btn" onclick="checkSpeed()">
+                🚨 CHECK & GENERATE CHALLAN
+            </button>
+        </div>
+
+        <!-- Right Panel - Challan Display -->
+        <div class="right-panel">
+            <h1>📄 CHALLAN RECEIPT</h1>
+            
+            <div class="section">
+                <h2>Live Speed Monitor</h2>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="font-size: 16px; color: #666;">Overspeed Percentage</div>
+                    <div style="font-size: 48px; font-weight: bold; color: #667eea;" id="overspeedPercent">0%</div>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Speed Limit</span>
+                        <span id="displaySpeedLimit">- km/h</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                        <span>Your Speed</span>
+                        <span id="displayCurrentSpeed">- km/h</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="challanContainer" style="display: none;">
+                <div class="challan-card">
+                    <div class="challan-header">⚠️ SPEED VIOLATION DETECTED</div>
+                    
+                    <div class="challan-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Challan ID</div>
+                            <div class="detail-value" id="challanId">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Date & Time</div>
+                            <div class="detail-value" id="challanDateTime">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Vehicle Type</div>
+                            <div class="detail-value" id="challanVehicleType">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Violation Type</div>
+                            <div class="detail-value" id="violationType">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Penalty Points</div>
+                            <div class="detail-value" id="penaltyPoints">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Repeat Offender</div>
+                            <div class="detail-value" id="repeatOffender">No</div>
+                        </div>
+                    </div>
+
+                    <div class="fine-amount">
+                        <div style="font-size: 14px;">TOTAL FINE AMOUNT</div>
+                        <div style="font-size: 36px; font-weight: bold;" id="fineAmount">₹0</div>
+                    </div>
+
+                    <div id="licenseContainer">
+                        <!-- License status will be displayed here -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="safeMessage" style="text-align: center; padding: 40px; display: none;">
+                <div style="font-size: 60px; margin-bottom: 20px;">✅</div>
+                <h2>No Violation Detected</h2>
+                <p style="color: #666; margin-top: 10px;">You are driving within the speed limit. Keep it up!</p>
+            </div>
+
+            <div class="previous-challans">
+                <h2>Previous Challans</h2>
+                <div class="challan-list" id="previousChallansList">
+                    <div class="no-challan">No previous challans found</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vehicle database with initial data
+        let vehicleDatabase = {
+            'CAR': {
+                limit: 60,
+                icon: '🚗',
+                name: 'Car',
+                previousChallans: 0,
+                totalFines: 0
+            },
+            'BIKE': {
+                limit: 50,
+                icon: '🏍️',
+                name: 'Bike',
+                previousChallans: 0,
+                totalFines: 0
+            },
+            'TRUCK': {
+                limit: 40,
+                icon: '🚚',
+                name: 'Truck',
+                previousChallans: 0,
+                totalFines: 0
+            },
+            'BUS': {
+                limit: 50,
+                icon: '🚌',
+                name: 'Bus',
+                previousChallans: 0,
+                totalFines: 0
+            }
+        };
+
+        // Fine structure
+        const FINE_STRUCTURE = [
+            { min: 0, max: 10, fine: 500, points: 1, type: 'Low' },
+            { min: 11, max: 20, fine: 1000, points: 2, type: 'Medium' },
+            { min: 21, max: 30, fine: 2000, points: 3, type: 'High' },
+            { min: 31, max: 40, fine: 5000, points: 5, type: 'Severe' },
+            { min: 41, max: 100, fine: 10000, points: 10, type: 'Extreme' }
+        ];
+
+        // Current selection
+        let selectedVehicle = null;
+        let currentSpeed = 50;
+        let challanHistory = [];
+
+        // DOM Elements
+        const speedDisplay = document.getElementById('speedDisplay');
+        const speedSlider = document.getElementById('speedSlider');
+        const selectedVehicleSpan = document.getElementById('selectedVehicle');
+        const speedLimitSpan = document.getElementById('speedLimit');
+        const currentSpeedSpan = document.getElementById('currentSpeed');
+        const speedStatus = document.getElementById('speedStatus');
+        const overspeedPercent = document.getElementById('overspeedPercent');
+        const displaySpeedLimit = document.getElementById('displaySpeedLimit');
+        const displayCurrentSpeed = document.getElementById('displayCurrentSpeed');
+        const challanContainer = document.getElementById('challanContainer');
+        const safeMessage = document.getElementById('safeMessage');
+        const previousChallansList = document.getElementById('previousChallansList');
+
+        // Select vehicle type
+        function selectVehicle(type) {
+            // Remove selected class from all vehicles
+            document.querySelectorAll('.vehicle-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked vehicle
+            event.target.closest('.vehicle-option').classList.add('selected');
+            
+            // Update selected vehicle
+            selectedVehicle = type;
+            const vehicle = vehicleDatabase[type];
+            
+            // Update display
+            selectedVehicleSpan.textContent = `${vehicle.icon} ${vehicle.name}`;
+            speedLimitSpan.textContent = vehicle.limit;
+            
+            // Update speed limit display
+            displaySpeedLimit.textContent = `${vehicle.limit} km/h`;
+            
+            // Immediately check current speed status
+            updateStatus();
+        }
+
+        // Update speed from slider
+        function updateSpeed(speed) {
+            currentSpeed = parseInt(speed);
+            speedDisplay.textContent = `${currentSpeed} km/h`;
+            currentSpeedSpan.textContent = currentSpeed;
+            displayCurrentSpeed.textContent = `${currentSpeed} km/h`;
+            
+            // Update status immediately
+            updateStatus();
+        }
+
+        // Update speed status
+        function updateStatus() {
+            if (!selectedVehicle) return;
+            
+            const vehicle = vehicleDatabase[selectedVehicle];
+            const limit = vehicle.limit;
+            
+            // Calculate overspeed percentage
+            const overspeed = Math.max(0, currentSpeed - limit);
+            const percent = limit > 0 ? Math.round((overspeed / limit) * 100) : 0;
+            overspeedPercent.textContent = `${percent}%`;
+            
+            // Update status indicator
+            if (currentSpeed <= limit) {
+                speedStatus.textContent = 'SAFE';
+                speedStatus.className = 'status-indicator status-safe';
+                overspeedPercent.style.color = '#00b894';
+            } else if (percent <= 10) {
+                speedStatus.textContent = 'MINOR';
+                speedStatus.className = 'status-indicator status-warning';
+                overspeedPercent.style.color = '#fdcb6e';
+            } else if (percent <= 30) {
+                speedStatus.textContent = 'HIGH';
+                speedStatus.className = 'status-indicator status-danger';
+                overspeedPercent.style.color = '#e17055';
+            } else {
+                speedStatus.textContent = 'EXTREME';
+                speedStatus.className = 'status-indicator status-critical';
+                overspeedPercent.style.color = '#d63031';
+            }
+        }
+
+        // Calculate fine based on overspeed
+        function calculateFine() {
+            if (!selectedVehicle) {
+                alert('Please select a vehicle type first!');
+                return;
+            }
+            
+            const vehicle = vehicleDatabase[selectedVehicle];
+            const limit = vehicle.limit;
+            
+            if (currentSpeed <= limit) {
+                // No violation
+                showSafeMessage();
+                return;
+            }
+            
+            // Calculate overspeed percentage
+            const overspeed = currentSpeed - limit;
+            const percent = Math.round((overspeed / limit) * 100);
+            
+            // Find appropriate fine category
+            let fineCategory = FINE_STRUCTURE.find(category => 
+                percent >= category.min && percent <= category.max
+            ) || FINE_STRUCTURE[FINE_STRUCTURE.length - 1];
+            
+            // Check if repeat offender
+            const isRepeatOffender = vehicle.previousChallans > 0;
+            let fineAmount = fineCategory.fine;
+            
+            // Apply penalty for repeat offenders
+            if (isRepeatOffender) {
+                fineAmount = Math.round(fineAmount * 1.5);
+            }
+            
+            // Generate challan
+            generateChallan(fineCategory, fineAmount, percent, isRepeatOffender);
+            
+            // Update vehicle record
+            vehicle.previousChallans++;
+            vehicle.totalFines += fineAmount;
+            
+            // Update previous challans display
+            updateChallanHistory();
+        }
+
+        // Show safe message (no violation)
+        function showSafeMessage() {
+            challanContainer.style.display = 'none';
+            safeMessage.style.display = 'block';
+        }
+
+        // Generate and display challan
+        function generateChallan(fineCategory, fineAmount, percent, isRepeatOffender) {
+            // Hide safe message
+            safeMessage.style.display = 'none';
+            
+            // Generate random challan ID
+            const challanId = 'CH' + Date.now().toString().slice(-8) + Math.floor(Math.random() * 1000);
+            
+            // Current date and time
+            const now = new Date();
+            const dateTime = now.toLocaleString('en-IN', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            
+            // Update challan details
+            document.getElementById('challanId').textContent = challanId;
+            document.getElementById('challanDateTime').textContent = dateTime;
+            document.getElementById('challanVehicleType').textContent = 
+                `${vehicleDatabase[selectedVehicle].icon} ${vehicleDatabase[selectedVehicle].name}`;
+            document.getElementById('violationType').textContent = `${fineCategory.type} Overspeed (${percent}%)`;
+            document.getElementById('penaltyPoints').textContent = fineCategory.points;
+            document.getElementById('repeatOffender').textContent = isRepeatOffender ? 'Yes (50% Extra)' : 'No';
+            document.getElementById('fineAmount').textContent = `₹${fineAmount}`;
+            
+            // Update license status
+            const licenseContainer = document.getElementById('licenseContainer');
+            if (percent >= 40) {
+                // License suspension for extreme overspeed
+                licenseContainer.innerHTML = `
+                    <div class="license-status license-suspended">
+                        ⚠️ LICENSE SUSPENDED - Court Hearing Required
+                    </div>
+                `;
+            } else if (vehicleDatabase[selectedVehicle].previousChallans >= 3) {
+                // Warning for multiple violations
+                licenseContainer.innerHTML = `
+                    <div class="license-status license-suspended">
+                        ⚠️ WARNING: 3+ VIOLATIONS - Next violation may result in license suspension
+                    </div>
+                `;
+            } else {
+                licenseContainer.innerHTML = `
+                    <div class="license-status license-valid">
+                        ✅ License Status: Valid
+                    </div>
+                `;
+            }
+            
+            // Add to history
+            challanHistory.unshift({
+                id: challanId,
+                date: dateTime,
+                vehicle: selectedVehicle,
+                speed: currentSpeed,
+                limit: vehicleDatabase[selectedVehicle].limit,
+                fine: fineAmount,
+                points: fineCategory.points
+            });
+            
+            // Show challan container
+            challanContainer.style.display = 'block';
+        }
+
+        // Update previous challans display
+        function updateChallanHistory() {
+            if (challanHistory.length === 0) {
+                previousChallansList.innerHTML = '<div class="no-challan">No previous challans found</div>';
+                return;
+            }
+            
+            let html = '';
+            challanHistory.forEach(challan => {
+                html += `
+                    <div class="challan-item">
+                        <div>
+                            <strong>${challan.id}</strong><br>
+                            <small>${challan.date}</small>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="color: #d63031; font-weight: bold;">₹${challan.fine}</div>
+                            <small>${challan.speed} km/h (${challan.points} pts)</small>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            previousChallansList.innerHTML = html;
+        }
+
+        // Check speed and generate challan
+        function checkSpeed() {
+            calculateFine();
+        }
+
+        // Initialize with default selection
+        window.onload = function() {
+            // Select car by default
+            document.querySelector('.vehicle-option[data-speed-limit="60"]').click();
+            updateStatus();
+        };
+    </script>
+</body>
+</html>
