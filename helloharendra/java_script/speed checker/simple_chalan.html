@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overspeed Challan System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+        
+        .fine-info {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .fine-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .fine-box {
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            background-color: #e9ecef;
+        }
+        
+        .speed-limit {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .fine-amount {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .license-suspended {
+            color: #dc3545;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 Overspeed Challan System</h1>
+        
+        <div class="fine-info">
+            <h3>Fine Structure</h3>
+            <div class="fine-details" id="fineStructure">
+                <!-- JavaScript will populate this -->
+            </div>
+            <p><strong>Note:</strong> Repeat offenders pay 50% extra fine. Extreme overspeed results in license suspension.</p>
+        </div>
+        
+        <div class="form-group">
+            <label for="regNumber">Vehicle Registration Number:</label>
+            <input type="text" id="regNumber" placeholder="e.g., MH12AB1234" value="MH12AB1234">
+        </div>
+        
+        <div class="form-group">
+            <label for="vehicleType">Vehicle Type:</label>
+            <select id="vehicleType">
+                <option value="CAR">Car (60 km/h limit)</option>
+                <option value="BIKE">Bike (50 km/h limit)</option>
+                <option value="TRUCK">Truck (40 km/h limit)</option>
+                <option value="BUS">Bus (50 km/h limit)</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="speed">Current Speed (km/h):</label>
+            <input type="number" id="speed" placeholder="Enter speed" value="80" min="0" max="200">
+        </div>
+        
+        <div class="form-group">
+            <label for="location">Location (Optional):</label>
+            <input type="text" id="location" placeholder="e.g., Main Road, Highway">
+        </div>
+        
+        <button onclick="issueChallan()">Check & Issue Challan</button>
+        <button onclick="checkAllVehicles()" style="background-color: #007bff;">View All Vehicles</button>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // Copy all the JavaScript functions from above here
+        // (The same constants and functions as in the first code block)
+        
+        // Then add these additional functions for the HTML interface:
+        
+        function displayFineStructureHTML() {
+            const container = document.getElementById('fineStructure');
+            let html = '';
+            
+            for (const [category, details] of Object.entries(FINE_STRUCTURE)) {
+                html += `
+                    <div class="fine-box">
+                        <strong>${category}</strong><br>
+                        Up to ${details.threshold}%<br>
+                        Fine: ₹${details.amount}<br>
+                        Points: ${details.points}
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        function issueChallan() {
+            const regNumber = document.getElementById('regNumber').value.trim();
+            const vehicleType = document.getElementById('vehicleType').value;
+            const speed = parseInt(document.getElementById('speed').value);
+            const location = document.getElementById('location').value.trim() || "Unknown Location";
+            
+            if (!regNumber || !speed) {
+                showResult("Please enter all required fields.", "error");
+                return;
+            }
+            
+            // Check if vehicle exists, if not add it
+            let vehicle = findVehicle(regNumber);
+            if (!vehicle) {
+                // Add new vehicle to database
+                vehicle = {
+                    regNumber: regNumber.toUpperCase(),
+                    type: vehicleType,
+                    owner: "Unknown Owner",
+                    previousChallans: 0
+                };
+                vehicleDatabase.push(vehicle);
+            }
+            
+            const result = calculateChallanHTML(regNumber, vehicleType, speed, location);
+            showResult(result.message, result.success ? "success" : "error");
+            
+            // Update display
+            displayFineStructureHTML();
+        }
+        
+        function calculateChallanHTML(regNumber, vehicleType, speed, location) {
+            const vehicle = findVehicle(regNumber);
+            
+            if (!vehicle) {
+                return {
+                    success: false,
+                    message: `Vehicle ${regNumber} not found in database.`
+                };
+            }
+            
+            const speedLimit = SPEED_LIMITS[vehicleType];
+            const isRepeatOffender = vehicle.previousChallans > 0;
+            const fineResult = calculateFine(vehicleType, speed, isRepeatOffender);
+            
+            if (speed <= speedLimit) {
+                return {
+                    success: true,
+                    message: `
+                        <h3>✅ No Violation</h3>
+                        <p>Vehicle: ${regNumber} (${vehicleType})</p>
+                        <p>Speed: ${speed} km/h (Limit: ${speedLimit} km/h)</p>
+                        <p>Location: ${location}</p>
+                        <p><strong>No fine applicable. Drive safely!</strong></p>
+                    `
+                };
+            }
+            
+            // Update vehicle record
+            if (fineResult.fine > 0) {
+                vehicle.previousChallans += 1;
+                
+                let message = `
+                    <h3>🚨 CHALLAN ISSUED</h3>
+                    <p><strong>Challan ID:</strong> CH${Date.now()}</p>
+                    <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+                    <p><strong>Vehicle:</strong> ${regNumber} (${vehicleType})</p>
+                    <p><strong>Owner:</strong> ${vehicle.owner}</p>
+                    <p><strong>Location:</strong> ${location}</p>
+                    <p><strong>Speed Limit:</strong> ${speedLimit} km/h</p>
+                    <p><strong>Current Speed:</strong> ${speed} km/h</p>
+                    <p><strong>Overspeed:</strong> ${fineResult.overspeedPercent.toFixed(1)}%</p>
+                    <p class="fine-amount"><strong>Fine Amount:</strong> ₹${fineResult.fine}</p>
+                    <p><strong>Penalty Points:</strong> ${fineResult.points}</p>
+                    <p><strong>Previous Challans:</strong> ${vehicle.previousChallans}</p>
+                `;
+                
+                if (fineResult.licenseSuspended) {
+                    message += `<p class="license-suspended">⚠️ LICENSE SUSPENDED</p>`;
+                }
+                
+                if (isRepeatOffender) {
+                    message += `<p><strong>⚠️ Repeat Offender (50% extra fine applied)</strong></p>`;
+                }
+                
+                return {
+                    success: true,
+                    message: message
+                };
+            }
+            
+            return {
+                success: true,
+                message: `<p>No violation for ${regNumber}.</p>`
+            };
+        }
+        
+        function checkAllVehicles() {
+            let html = '<h3>📋 Vehicle Database</h3>';
+            
+            vehicleDatabase.forEach(vehicle => {
+                html += `
+                    <div style="padding: 10px; border-bottom: 1px solid #ddd;">
+                        <strong>${vehicle.regNumber}</strong><br>
+                        Type: ${vehicle.type} | Owner: ${vehicle.owner}<br>
+                        Previous Challans: ${vehicle.previousChallans}
+                    </div>
+                `;
+            });
+            
+            showResult(html, "success");
+        }
+        
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = message;
+            resultDiv.className = 'result ' + type;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            displayFineStructureHTML();
+            
+            // Add some sample data
+            vehicleDatabase = [
+                { regNumber: 'MH12AB1234', type: 'CAR', owner: 'John Doe', previousChallans: 0 },
+                { regNumber: 'MH12CD5678', type: 'BIKE', owner: 'Jane Smith', previousChallans: 2 },
+                { regNumber: 'MH12EF9012', type: 'TRUCK', owner: 'Raj Kumar', previousChallans: 1 }
+            ];
+        });
+        
+        // Include all the JavaScript functions from the first code block here
+        // (SPEED_LIMITS, FINE_STRUCTURE, calculateFine, findVehicle, etc.)
+    </script>
+</body>
+</html>
