@@ -1,9 +1,9 @@
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport"content="width=device-width, initial-scale=1.0">
         <title>css varibles & theming</title>
-        <link rel="stylesgeet"href="css-varibles.html">
+        <link rel="stylesheet" href="css-variables.css">
     </head>
     <body>
         <div class="theme-switcher">
@@ -11,21 +11,25 @@
             <button onclick="document.documentElement.style.setProperty('--primary-color','#e74c3c')">red theme</button>
             <button onclick="document.documentElement.style.setProperty('--primary-color','#2ecc71')">green theme</button>
         </div>
+
         <div class="themed-container">
             <h1>css varibles demo</h1>
             <p>this page documentrates the power of css custom properties</p>
+
             <div class="card-grid">
                 <div class="themed-card">
                     <h3>card 1</h3>
                     <p>using css varibles for dynamic theming</p>
                     <button class="btn"> learn more</button>
                 </div>
+
                  <div class="themed-card">
                     <h3>card 2</h3>
                     <p> varibles cascade through the dom</p>
                     <button class="btn">learn more</button>
                  </div>
                  <div class="themed-card">
+                    <h3>card 3</h3>
                     <p>update varibles with javA script</p>
                     <button class="btn">learn more</button>
                  </div>
