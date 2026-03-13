@@ -19,7 +19,7 @@
 
 }
 body{
-    font-family: 'segoe UI','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg,#3498db 0%,#764ba2 100%);
     min-height: 100vh;
     padding: 20px;
@@ -85,16 +85,16 @@ h1:hover::after {
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-    gap: calc(var(--spacing-unit));
-    margin: calc(var(--spacing-unit));
+    gap: calc(var(--spacing-unit)* 3);
+    margin: calc(var(--spacing-unit)* 4)0;
 
 }
 .themed-card {
     background-color: var(--light-color);
-    padding: calc(var(--spacing-unit));
+    padding: calc(var(--spacing-unit)* 3);
     border-radius:var(--border-radius);
     border-left: 4px solid var(--box-shadow);
-    transition: all var((--transition-speed));
+    transition: all var(--transition-speed) ease;
 
 }
 .themed-card:hover {
@@ -154,12 +154,13 @@ h1:hover::after {
     background: linear-gradient(
         90deg
         transparent,
-        rgba(255,255,255.0.3),
+        rgba(255,255,255,0.3),
         transparent
 
     );
     animation: shimmer 2s infinite;
 }
+
 @keyframes shimmer {
     0% {
         transform: translateX(-100%);
