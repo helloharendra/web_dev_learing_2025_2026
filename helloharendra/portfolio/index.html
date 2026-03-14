@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harendra Prajapati · founder / engineer</title>
+    <!-- separate CSS file (styles.css) -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- fonts & icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- dynamic cursor background (ultra modern) -->
+    <div class="cursor-glow"></div>
+
+    <!-- header with glassmorphism -->
+    <header class="site-header">
+      <div class="container nav-container">
+        <div class="logo">
+          <a href="#">H.P.</a>
+        </div>
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="#work">work</a></li>
+            <li><a href="#ventures">ventures</a></li>
+            <li><a href="#skills">stack</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#academy">academy</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <!-- mobile nav overlay -->
+      <div class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a href="#work">work</a></li>
+          <li><a href="#ventures">ventures</a></li>
+          <li><a href="#skills">stack</a></li>
+          <li><a href="#projects">projects</a></li>
+          <li><a href="#academy">academy</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <!-- hero section: founder, engineer, educator -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="badge-icon"><i class="fas fa-code"></i></span>
+              <span>3+ years • full‑stack • AI</span>
+            </div>
+            <h1>Harendra <span class="gradient-text">Prajapati</span></h1>
+            <div class="hero-titles">
+              <span>software engineer</span>
+              <span class="dot">•</span>
+              <span>founder</span>
+              <span class="dot">•</span>
+              <span>educator</span>
+            </div>
+            <p class="hero-description">
+              Building <strong>Naya Prayog</strong> — a technology studio &
+              academy. I craft full‑stack products, AI solutions, and mentor the
+              next generation of developers.
+            </p>
+            <div class="hero-cta">
+              <a href="#work" class="btn btn-primary"
+                >explore my work <i class="fas fa-arrow-right"></i
+              ></a>
+              <a
+                href="https://github.com/helloharendra"
+                target="_blank"
+                class="btn btn-icon"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="#contact" class="btn btn-icon"
+                ><i class="fas fa-envelope"></i
+              ></a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="code-window">
+              <div class="window-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="window-title">about.me</span>
+              </div>
+              <div class="window-body">
+                <pre><span class="line"><span class="keyword">const</span> harendra = {</span>
+<span class="line">  role: [<span class="string">'software engineer'</span>, <span class="string">'founder'</span>, <span class="string">'educator'</span>],</span>
+<span class="line">  ventures: [<span class="string">'Naya Prayog Technology'</span>, <span class="string">'Naya Prayog Academy'</span>],</span>
+<span class="line">  stack: [<span class="string">'Python'</span>, <span class="string">'JS/TS'</span>, <span class="string">'Flutter'</span>, <span class="string">'React'</span>, <span class="string">'FastAPI'</span>],</span>
+<span class="line">  teaching: [<span class="string">'web dev'</span>, <span class="string">'Flutter'</span>, <span class="string">'data science'</span>],</span>
+<span class="line">  github: <span class="string">'helloharendra'</span></span>
+<span class="line">};</span></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- work experience / role brief -->
+      <section id="work" class="work-summary">
+        <div class="container">
+          <div class="section-header">
+            <h2>
+              engineering <span class="gradient-text">+</span> entrepreneurship
+            </h2>
+            <p>
+              3+ years of building products, leading teams, and teaching code
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">production apps</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">2</span>
+              <span class="stat-label">ventures founded</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">200+</span>
+              <span class="stat-label">students trained</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">technologies</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ventures: naya prayog technology & academy -->
+      <section id="ventures" class="ventures">
+        <div class="container">
+          <div class="section-header">
+            <h2>my <span class="gradient-text">ventures</span></h2>
+            <p>building tools and talent through Naya Prayog</p>
+          </div>
+          <div class="ventures-grid">
+            <div class="venture-card">
+              <div class="venture-icon"><i class="fas fa-laptop-code"></i></div>
+              <h3>Naya Prayog Technology</h3>
+              <p>
+                Software development studio – web, mobile, AI solutions for
+                clients. We turn ideas into scalable products.
+              </p>
+              <ul class="venture-features">
+                <li>web & mobile dev</li>
+                <li>AI integration</li>
+                <li>client partnerships</li>
+              </ul>
+            </div>
+            <div class="venture-card">
+              <div class="venture-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </div>
+              <h3>Naya Prayog Academy</h3>
+              <p>
+                Hands-on coding education: web dev, Flutter, Python, data
+                science, and Tally. Multiple daily batches.
+              </p>
+              <ul class="venture-features">
+                <li>real-world projects</li>
+                <li>flexible batches</li>
+                <li>mentorship</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- skills cloud (ultra modern bubble) -->
+      <section id="skills" class="skills">
+        <div class="container">
+          <div class="section-header">
+            <h2>technical <span class="gradient-text">stack</span></h2>
+            <p>languages, frameworks & tools i speak fluently</p>
+          </div>
+          <div class="skills-cloud" id="skillsCloud">
+            <!-- will be populated by js for consistent look, but also hardcoded backup -->
+          </div>
+          <div class="skill-categories">
+            <div class="skill-cat">
+              <h4>languages</h4>
+              <div class="cat-items">
+                Python, JavaScript, TypeScript, Dart, Java, C++, HTML, CSS
+              </div>
+            </div>
+            <div class="skill-cat">
+              <h4>frameworks</h4>
+              <div class="cat-items">
+                Flutter, FastAPI, Django, React, Next.js, Spring Boot
+              </div>
+            </div>
+            <div class="skill-cat">
+              <h4>AI / data</h4>
+              <div class="cat-items">
+                Machine Learning, Deep Learning, Data Analysis, Data Science
+              </div>
+            </div>
+            <div class="skill-cat">
+              <h4>databases</h4>
+              <div class="cat-items">
+                Firebase, Supabase, PostgreSQL, MongoDB, SQL
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- major projects (cards) -->
+      <section id="projects" class="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>flagship <span class="gradient-text">projects</span></h2>
+            <p>real applications i’ve architected and built</p>
+          </div>
+          <div class="project-grid" id="projectGrid">
+            <!-- javascript will inject from array -->
+          </div>
+          <div class="center-text">
+            <a
+              href="https://github.com/helloharendra"
+              target="_blank"
+              class="btn btn-outline"
+              >see all on github <i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- academy / teaching -->
+      <section id="academy" class="academy">
+        <div class="container academy-grid">
+          <div class="academy-content">
+            <h2>naya prayog <span class="gradient-text">academy</span></h2>
+            <p class="academy-sub">shaping developers, one batch at a time</p>
+            <p>
+              I personally train students in real‑world development: from basic
+              coding to full‑stack and AI. Multiple daily batches with
+              project‑based learning.
+            </p>
+            <div class="course-tags">
+              <span>web development</span>
+              <span>Flutter app development</span>
+              <span>Python & data science</span>
+              <span>basic computer</span>
+              <span>Tally accounting</span>
+            </div>
+            <div class="academy-stats">
+              <div><strong>200+</strong> students</div>
+              <div><strong>live</strong> projects</div>
+              <div><strong>mentorship</strong> model</div>
+            </div>
+          </div>
+          <div class="academy-visual">
+            <div class="academy-card">
+              <i class="fas fa-graduation-cap"></i>
+              <h4>classroom to cloud</h4>
+              <p>code, debug, deploy — together</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- contact / connect -->
+      <section id="contact" class="contact">
+        <div class="container contact-container">
+          <h2>let’s <span class="gradient-text">connect</span></h2>
+          <p>collaborate, hire, or just talk tech — i’m open</p>
+          <div class="contact-links">
+            <a
+              href="https://github.com/helloharendra"
+              target="_blank"
+              class="contact-card"
+            >
+              <i class="fab fa-github"></i>
+              <span>github/helloharendra</span>
+            </a>
+            <a href="#" class="contact-card">
+              <i class="fas fa-envelope"></i>
+              <span>support@nayaprayog.com</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/helloharendra/?originalSubdomain=in"
+              class="contact-card"
+            >
+              <i class="fab fa-linkedin-in"></i>
+              <span>linkedin/in/harendra</span>
+            </a>
+          </div>
+          <p class="github-note">
+            ⭐ explore my repos: <strong>helloharendra</strong> on GitHub
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>
+          © 2026 Harendra Prajapati — built with
+          <i class="fas fa-heart"></i> for code & education
+        </p>
+        <p class="footer-small">Naya Prayog Technology • Naya Prayog Academy</p>
+      </div>
+    </footer>
+
+    <!-- separate JS file -->
+    <script src="script.js"></script>
+  </body>
+</html>
