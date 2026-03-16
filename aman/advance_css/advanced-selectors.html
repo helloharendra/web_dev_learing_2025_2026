@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"content="width=device-width,initial-scale=1.0">
+        <title> Advanced CSS Selectors</title>
+       <link rel="stylesheet" href="advansed-selectors.css">
+</head>
+<body>
+    <h1 class="fancy-title">Advanced CSS Selectors <span>masterclass</span></h1>
+    
+    <div class="selector-demo">
+        <h2>Attriute Selectors</h2>
+        <div class="demo-grid">
+            <a href="https://example.com"target="_blank">External link </a>
+            <a href="/about"target="_self"> internal link </a>
+            <a href="document.pdf download"> PDF document</a>
+            <a href="imag.jpg" target="_blank"> image File </a>
+            <input type="text" placeholder="text input"/>
+            <input type="email"placeholder="email inert"/>
+            <input type="password"placeholder="password"/>
+            <input type="number" placeholder="number"/>
+    
+        </div>
+    </div>
+    <div class="selector-demo">
+        <h2> structural pseudo-classes</h2>
+        <div class="list-demo">
+            <h3> first and last</h3>
+            <ul class="styed-list">
+                <li>fiest child</li>
+                <li>middle child</li>
+                <li>last child</li>
+                </ul>
+                <h3>Nth-child patterns</h3>
+                <ul class="patterns-list">
+                     <li>Item 1 (odd)</li>
+                     <li>Item 2 (even)</li>
+                     <li>Item 3 (odd)</li>
+                     <li>Item 4 (even)</li>
+                     <li>Item 5 (odd)</li>
+                     <li>Item 6 (even)</li>
+                     <li>Item 7 (odd)</li>
+                     <li>Item 8 (even)</li>
+                     </ul>
+                     <h3>comlex patterns</h3>
+                     <div class="pattern-grid">
+                        <div> 1 (n+3)</div>
+                        <div> 2 </div>
+                        <div> 3 </div>
+                        <div> 4 </div>
+                        <div> 5 </div>
+                        <div> 6 </div>
+                        <div> 7 </div>
+                        <div> 8 </div>
+                    </div>
+                 </div>
+             </div>
+             <div class="selector-demo">
+                <h2> Empty and not Selectors</h2>
+                <div class="Empty-demo">
+                    <div class="card"> has content</div>
+                    <div class="card"></div>
+                    <div class="card"> also has content0</div>anim
+                    <div class="card"><!-- comment only-->></div>
+
+                    <div class="not-demo">
+                        <div class="Item highlight">highlighted</div>
+                        <div class="Item">normal</div>
+                        <div class="Item special"> special</div>
+                        <div class="Item">normal</div>
+                        </div>
+                    </div>
+                 </div>
+
+                 <div class="selector-demo">   
+                    <h2> form state Selectors0</h2>
+                    <form class="form-demo ">
+                        <div class="form group">
+                            <label>
+                                <input type="checkbox" checked> checked checkbox
+                            </label>
+                            <label>
+                                <input type="checkbox"> unchecked checkbox
+                            </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="radio" checked> option 1
+                                </label> 
+                                <label>
+                                    <input type="radio" name="radio"> option 2
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" placeholder="Enabled input"/>
+                                <input type="text" placeholder="Disabled input" disabled/>
+                                <input type="text" placeholder="Readonly input" readonly value="can'edit"/>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" placeholder="enter email" required/>
+                                <input type="text" placeholder="optional field"/>
+                                <input type="number" min="0"max="10"placeholder="range 0-10"/>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit":Enabled>submit</button>
+                                <button type="reset">reset</button>
+                            </div>
+                        </form>
+                        </div>
+                        <div class="selector-demo">
+                            <h2>target pseudo-classes</h2>
+                            <div class="target-demo">
+                                <div class="target-links">
+                                    <a href="#section1"> go to section 1</a>
+                                    <a href="#section2"> go to section 2</a>
+                                    <a href="#section3"> go to section 3</a>
+                        </div>
+                        <div class="target-section">
+                            <div id="section1" class="target-section">
+                                <h3>section1</h3>
+                                <p>this section will be highlightedwhen targetd via URL.</p>
+                            </div>
+                            <div id="section2" class="target-section">
+                                <h3>section 2</h3>
+                                <p>notice the :target pseudo-cllass styling.</p>
+                                </div>
+                                <div id="section3" class="target-section">
+                                    <h3>section 3</h3>
+                                    <p>click the links above to see it in action!</p>
+                                    </div>
+                                 </div>
+                              </div>
+                            </div>
+
+
+                          <div class="selector-demo">
+                            <h2>language pseudo-cllass</h2>
+                            <div class="lang-demo">
+                                <p lang="en"> this is english text with specific styling.</p>
+                                <p lang="fr"> ceci est un texte francais avec un style spencifique.</p>
+                                <p lang="de"> dies ist eun deutscher text mit spezifsche stil.</p>
+                                <p lang="es"> este es un texto en espnol con edtilo especifico.</p>
+
+                          </div>
+
+    </div>
+</body>
+</html>
