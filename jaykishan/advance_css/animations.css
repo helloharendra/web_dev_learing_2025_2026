@@ -1,4 +1,5 @@
- *{margin: 0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -266,4 +267,3 @@ body {
 .scroll-item:nth-child(5) {
   animation-delay: 0.5s;
 }
-
