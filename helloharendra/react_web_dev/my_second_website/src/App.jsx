@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <center>
-        <h1>Welcome to my website</h1>
+        <h1>Welcome to website</h1>
 
         <p>this is my second website</p>
       </center>
