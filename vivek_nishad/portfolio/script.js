@@ -1,4 +1,3 @@
-
 (function () {
   "use strict";
 
@@ -214,5 +213,5 @@
       observer.observe(el);
     });
 
-  console.log("✨ Harendra’s ultra‑modern portfolio ready");
+  console.log("✨ Vikash’s ultra‑modern portfolio ready");
 })();
