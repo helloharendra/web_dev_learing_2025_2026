@@ -1,14 +1,26 @@
-import Header from "./components/Header";
+import React from "react"
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/about";
+import Courses from "./components/Courses";
+import Features from "./components/Features";
+import Testimonials from "./components/Testimonials";
+import About from "./components/About";
+import Footer from "./components/Footer";
+
 
 function App () {
   return (
-    <>
-    <header/>
+    
+    <div className="app">
+    <Navbar/>
     <Hero/>
+    <Courses/>
+    <Features/>
+    <Testimonials/>
     <About/>
-    </>
+    <Footer/>
+    </div>
+  
   );
 }
 
