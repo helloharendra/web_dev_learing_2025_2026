@@ -1,0 +1,74 @@
+/* responsive-utils.css - Additional Helper Classes */
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Responsive text */
+.text-responsive {
+  font-size: clamp(1rem, 4vw, 2rem);
+}
+
+/* Responsive container */
+.container-responsive {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container-responsive {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-responsive {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-responsive {
+    max-width: 1140px;
+  }
+}
+
+/* Responsive spacing */
+.m-responsive {
+  margin: clamp(0.5rem, 2vw, 2rem);
+}
+
+.p-responsive {
+  padding: clamp(0.5rem, 2vw, 2rem);
+}
+
+/* Flex responsive */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+  }
+}
