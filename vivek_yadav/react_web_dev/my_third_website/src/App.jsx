@@ -1,11 +1,12 @@
 import React from "react"
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
 import Courses from "./components/Courses";
 import Features from "./components/Features";
 import Testimonials from "./components/Testimonials";
-import About from "./components/About";
 import Footer from "./components/Footer";
+import Contact from "./components/Contacts";
 
 
 function App () {
@@ -13,12 +14,13 @@ function App () {
     
     <div className="app">
     <Navbar/>
-    <Hero/>
-    <Courses/>
-    <Features/>
-    <Testimonials/>
-    <About/>
-    <Footer/>
+   <Hero/>
+   <About/>
+   <Courses/>
+   <Features/>
+   <Footer/>
+   <Testimonials/>
+   <Contact/>
     </div>
   
   );
